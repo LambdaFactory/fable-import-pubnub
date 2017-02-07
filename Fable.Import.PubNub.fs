@@ -65,6 +65,8 @@ module pubnub =
         abstract subscription: string with get, set
         abstract timetoken: string with get, set
         abstract message: string with get, set
+        abstract publisher: string with get, set
+
 
 
     and [<AllowNullLiteral>] ListenerParams =
@@ -77,5 +79,6 @@ module pubnub =
         abstract unsubscribe: ``params``: UnsubscribeParams -> unit
         abstract history: ``params``: HistoryParams -> unit
         abstract addListener: ``params``: ListenerParams -> unit
+        abstract getUUID: unit -> string
 
     let [<ImportAttribute("default", "pubnub")>] PubNubConstructor: InitParams -> PubNub = jsNative
