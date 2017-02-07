@@ -41,7 +41,7 @@ module pubnub =
     and [<AllowNullLiteral>] PublishParams =
         abstract callback: Func<obj, unit> option with get, set
         abstract channel: string with get, set
-        abstract message: JSON with get, set
+        abstract message: obj with get, set
         abstract publish_key: string option with get, set
         abstract store_in_history: bool option with get, set
         abstract error: Func<obj, unit> option with get, set
