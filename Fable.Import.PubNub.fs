@@ -60,11 +60,22 @@ module pubnub =
         abstract include_token: bool option with get, set
         abstract error: Func<unit, unit> option with get, set
 
+    and [<AllowNullLiteral>] Message =
+        abstract channel: string with get, set
+        abstract subscription: string with get, set
+        abstract timetoken: string with get, set
+        abstract message: string with get, set
+
+
+    and [<AllowNullLiteral>] ListenerParams =
+        abstract message: Func<Message, unit> with get, set
+
     and [<AllowNullLiteral>] PubNub =
         abstract init: ``params``: InitParams -> PubNub
         abstract publish: pubnubNotification: PublishParams * ?callback: Func<obj, unit> -> unit
         abstract subscribe: ``params``: SubscribeParams * ?callback: Func<obj, unit> -> unit
         abstract unsubscribe: ``params``: UnsubscribeParams -> unit
         abstract history: ``params``: HistoryParams -> unit
+        abstract addListener: ``params``: ListenerParams -> unit
 
     let [<ImportAttribute("default", "pubnub")>] PubNubConstructor: InitParams -> PubNub = jsNative
