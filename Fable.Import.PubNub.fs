@@ -24,7 +24,7 @@ module pubnub =
         abstract error: Func<obj, unit> option with get, set
 
     and [<AllowNullLiteral>] SubscribeParams =
-        abstract channel: U2<string, ResizeArray<string>> option with get, set
+        abstract channels: U2<string, ResizeArray<string>> option with get, set
         abstract channel_group: string option with get, set
         abstract timetoken: float option with get, set
         abstract connect: Func<obj, unit> option with get, set
